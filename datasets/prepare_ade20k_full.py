@@ -975,6 +975,7 @@ if __name__ == "__main__":
         lab = np.asarray(info["class_mask"])
 
         h, w = img.shape[0], img.shape[1]
+        # 压缩图片
         max_size = 512
         resize = True
         if w >= h > max_size:
