@@ -942,8 +942,9 @@ def loadAde20K(file):
 
 
 if __name__ == "__main__":
-    dataset_dir = Path(os.getenv("DETECTRON2_DATASETS", "datasets"))
-    index_file = dataset_dir / "ADE20K_2021_17_01" / "index_ade20k.pkl"
+    #dataset_dir = Path(os.getenv("DETECTRON2_DATASETS", "datasets"))
+    dataset_dir = 'G:/ADE20k_2017/ADE20K-main/dataset'
+    index_file = dataset_dir+"/ADE20K_2021_17_01""/index_ade20k.pkl"
     print('Caution: we only generate the validation set!')
     with open(index_file, "rb") as f:
         index_ade20k = pkl.load(f)
