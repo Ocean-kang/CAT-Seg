@@ -16,7 +16,7 @@ from cat_seg.third_party import clip
 from cat_seg.third_party import imagenet_templates
 
 import numpy as np
-import open_clip
+# import open_clip
 class CATSegPredictor(nn.Module):
     @configurable
     def __init__(
@@ -62,15 +62,16 @@ class CATSegPredictor(nn.Module):
   
         self.tokenizer = None
         if clip_pretrained == "ViT-G" or clip_pretrained == "ViT-H":
-            # for OpenCLIP models
-            name, pretrain = ('ViT-H-14', 'laion2b_s32b_b79k') if clip_pretrained == 'ViT-H' else ('ViT-bigG-14', 'laion2b_s39b_b160k')
-            clip_model, _, clip_preprocess = open_clip.create_model_and_transforms(
-                name, 
-                pretrained=pretrain, 
-                device=device, 
-                force_image_size=336,)
+            print('Open_clip')
+            # # for OpenCLIP models
+            # name, pretrain = ('ViT-H-14', 'laion2b_s32b_b79k') if clip_pretrained == 'ViT-H' else ('ViT-bigG-14', 'laion2b_s39b_b160k')
+            # clip_model, _, clip_preprocess = open_clip.create_model_and_transforms(
+            #     name, 
+            #     pretrained=pretrain, 
+            #     device=device, 
+            #     force_image_size=336,)
         
-            self.tokenizer = open_clip.get_tokenizer(name)
+            # self.tokenizer = open_clip.get_tokenizer(name)
         else:
             # for OpenAI models
             clip_model, clip_preprocess = clip.load(clip_pretrained, device=device, jit=False, prompt_depth=prompt_depth, prompt_length=prompt_length)
